@@ -56,10 +56,19 @@ export class ProductService {
     product: ProductUpdateDto,
     products: ProductDto[],
   ) {
-    // const findIndexProduct = products.findIndex(
-    //   (product) => product.productId === Id,
-    // );
-    // const findProduct = products.find((product) => product.productId === Id);
+    const productIndex = products.findIndex(
+      (product) => product.productId === Id,
+    );
+
+    const productFind = products.find((product) => product.productId === Id);
+
+    Object.keys(product).forEach((key) => {
+      if (productFind[key]) {
+        productFind[key] = product[key];
+      }
+    });
+
+    products.splice(productIndex, 1, productFind);
 
     return products;
   }

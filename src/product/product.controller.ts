@@ -42,8 +42,6 @@ export class ProductController {
     return this.productService.findAll(this.products, query);
   }
 
-  //http://localhost:3000/product/1/manzana
-
   @Get(':productId') // :isPromotion
   getOne(
     @Param(
